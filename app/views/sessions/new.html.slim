@@ -1,0 +1,12 @@
+.row
+  .col-md-6.col-md-offset-3
+    h1 Sign In
+
+    - if flash[:error]
+      .alert.alert-danger
+        p Wrong email or password
+
+    = simple_form_for :session, url: sessions_path, method: :post do |f|
+      = f.input :email, required: true
+      = f.input :password, required: true
+      = f.submit "Login", class: 'btn btn-primary'
