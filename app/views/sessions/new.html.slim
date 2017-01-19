@@ -6,7 +6,7 @@
       .alert.alert-danger
         p Wrong email or password
 
-    = simple_form_for :session, url: sessions_path, method: :post do |f|
-      = f.input :email, required: true
+    = simple_form_for :session, url: sessions_path, method: :post, html: {novalidate: false} do |f|
+      = f.input :email, required: true, as: :email
       = f.input :password, required: true
       = f.submit "Login", class: 'btn btn-primary'

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   enumerize :role, in: [:user, :admin]
 
   validates :email, presence: true, uniqueness: true
+  validates :role, presence: true
 end
