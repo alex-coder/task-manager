@@ -21,6 +21,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'state_machines-activerecord'
 gem 'simple_form'
 gem 'enumerize'
+gem 'slim'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug', platform: :mri

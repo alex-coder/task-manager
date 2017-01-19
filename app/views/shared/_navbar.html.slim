@@ -1,0 +1,21 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#" Task manager
+
+    #navbar-collapse.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.active
+          a href="#"
+            | Link
+        li
+          a href="#"  Link
+
+      - if signed_in?
+        ul.nav.navbar-nav.navbar-right
+          li= link_to "Logout", sessions_path, remote: true, method: :delete
