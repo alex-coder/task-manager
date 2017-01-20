@@ -15,6 +15,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    sign_out(current_user)
+    redirect_to new_sessions_path
+  end
+
   private
 
   def attributes

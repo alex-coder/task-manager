@@ -1,12 +1,8 @@
 module AuthManager
   extend ActiveSupport::Concern
 
-  included do
-    helper_method :current_user, :signed_in?
-  end
-
   def sign_in(user)
-    session[:user_id] = user
+    session[:user_id] = user.id
   end
 
   def sign_out(user)

@@ -23,13 +23,14 @@ gem 'simple_form'
 gem 'enumerize'
 gem 'slim'
 gem 'bootstrap-sass'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'rspec-rails', '~> 3.5'
   gem 'rails-controller-testing'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end
 
 group :development do

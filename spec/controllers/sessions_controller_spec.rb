@@ -11,7 +11,17 @@ RSpec.describe SessionsController, type: :controller do
   it 'should login user' do
     user = create(:user)
     post :create, params: { session: { email: user.email, password: user.password } }
-    expect(response).to be_success
     expect(response).to redirect_to(root_path)
+  end
+
+  it 'should not login user' do
+    user = create(:user)
+    post :create, params: { session: { email: user.email }}
+    expect(response).to redirect_to(new_sessions_path)
+  end
+
+  it 'should logout user' do
+    delete :destroy
+    expect(response).to redirect_to(new_sessions_path)
   end
 end

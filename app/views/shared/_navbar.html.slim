@@ -1,21 +1,12 @@
 nav.navbar.navbar-default
   .container-fluid
     .navbar-header
-      button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse" data-toggle="collapse" type="button"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
       a.navbar-brand href=root_path Task manager
 
-    #navbar-collapse.collapse.navbar-collapse
+    - if signed_in?
       ul.nav.navbar-nav
-        li.active
-          a href="#"
-            | Link
-        li
-          a href="#"  Link
+        li class="#{current_page?(new_task_path) ? 'active' : ''}" = link_to "Create", new_task_path
 
-      - if signed_in?
-        ul.nav.navbar-nav.navbar-right
-          li= link_to "Logout", sessions_path, remote: true, method: :delete
+      ul.nav.navbar-nav.navbar-right
+        li.navbar-text= current_user.name
+        li= link_to "Logout", sessions_path, remote: true, method: :delete

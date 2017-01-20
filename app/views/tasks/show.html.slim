@@ -1,0 +1,19 @@
+h1 = "##{@task.id} | #{@task.name}"
+
+.row
+  .col-md-12
+    p.text-muted = "Created at: #{l(@task.created_at, format: :short)}"
+    p class="text-#{status_class(@task.state)}" = "Status: #{@task.state}"
+
+    - if current_user.role.admin?
+      p.text-muted = "Bound to: #{@task.user.name}"
+
+    p = @task.description
+
+    - if @task.attachment.present?
+      h4 Attachment
+      = render_attach(@task)
+hr
+.row
+  .col-md-12
+    = link_to "Edit task", edit_task_path(@task), class: 'btn btn-primary'

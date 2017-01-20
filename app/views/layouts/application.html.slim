@@ -8,5 +8,9 @@ html
   body
     = render 'shared/navbar'
 
-    .container
+    .container-fluid
+      - if flash[:notice]
+        .alert.alert-info
+          p= flash[:notice]
+
       = yield

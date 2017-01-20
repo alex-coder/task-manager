@@ -1,0 +1,15 @@
+= simple_form_for task do |f|
+  = f.input :name
+  = f.input :description
+  = f.input :state, collection: Task.states.map(&:name), include_blank: false
+  - if task.attachment.present?
+    .row
+      .col-md-4
+        = render_attach(task)
+
+  = f.input :attachment
+
+  - if current_user.role.admin?
+    = f.input :user_id, collection: User.all
+
+  = f.submit class: 'btn btn-primary'
