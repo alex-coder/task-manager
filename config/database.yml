@@ -13,6 +13,8 @@ development:
 test:
   <<: *default
   database: task-manager_test
+  username: travis
+  password:
 
 production:
   <<: *default
