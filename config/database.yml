@@ -11,7 +11,8 @@ development:
   database: task-manager_development
 
 test:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
   database: task-manager_test
   username: travis
   password:
