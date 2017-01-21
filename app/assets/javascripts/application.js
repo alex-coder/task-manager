@@ -3,7 +3,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 
-$(function () {
+var ready = function () {
   $('[class*=change-state-]')
     .on('ajax:success', function (e, data) {
       var $task = $('#task-' + data.id);
@@ -11,4 +11,7 @@ $(function () {
       $task.find('.change-state-' + data.state).addClass('active');
       $task.find('.status-text').text(data.state);
     })
-})
+};
+
+$(document).ready(ready);
+$(document).on('turbolinks:load', ready);

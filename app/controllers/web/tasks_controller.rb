@@ -2,7 +2,7 @@ class Web::TasksController < Web::ApplicationController
   before_action :check_auth
 
   def index
-    @tasks = current_user.fetch_tasks.page(params[:page])
+    @tasks = current_user.fetch_tasks.order(created_at: :desc).page(params[:page])
   end
 
   def new
