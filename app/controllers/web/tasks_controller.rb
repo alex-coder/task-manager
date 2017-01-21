@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class Web::TasksController < Web::ApplicationController
   before_action :check_auth
 
   def index
@@ -10,7 +10,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new attributes
+    @task = Task.new(attributes)
 
     if @task.save
       redirect_to @task
@@ -45,19 +45,14 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-  def state
-    @task = fetch_task
-    @task.update state: params[:state]
-    render json: @task.as_json(only: [:id, :state])
-  end
-
   private
 
   def fetch_task
-    Task.find params[:id]
+    current_user.fetch_tasks.find(params[:id])
   end
 
   def attributes
-    params.require(:task).permit(:name, :description, :state, :user_id, attachment: [])
+    params.require(:task)
+      .permit(:name, :description, :state, :user_id, :attachment)
   end
 end

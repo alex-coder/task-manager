@@ -1,9 +1,9 @@
-class SessionsController < ApplicationController
+class Web::SessionsController < Web::ApplicationController
   def new
   end
 
   def create
-    @user = User.find_by email: attributes[:email]
+    @user = User.find_by(email: attributes[:email])
 
     if @user && @user.authenticate(attributes[:password])
       sign_in(@user)

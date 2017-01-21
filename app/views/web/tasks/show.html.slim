@@ -3,7 +3,7 @@ h1 = "##{@task.id} | #{@task.name}"
 .row
   .col-md-12
     p.text-muted = "Created at: #{l(@task.created_at, format: :short)}"
-    p class="text-#{status_class(@task.state)}" = "Status: #{@task.state}"
+    p = "Status: #{@task.state}"
 
     - if current_user.role.admin?
       p.text-muted = "Bound to: #{@task.user.name}"
@@ -12,7 +12,9 @@ h1 = "##{@task.id} | #{@task.name}"
 
     - if @task.attachment.present?
       h4 Attachment
-      = render_attach(@task)
+      .row
+        .col-md-4
+          = render_attach(@task)
 hr
 .row
   .col-md-12

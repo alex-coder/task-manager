@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe TasksController, type: :controller do
+RSpec.describe Web::TasksController, type: :controller do
   it 'should show user\'s tasks' do
     user = create(:user)
     sign_in user
@@ -34,19 +34,6 @@ RSpec.describe TasksController, type: :controller do
     }
 
     expect(response).to redirect_to(Task.last)
-  end
-
-  it 'should update task state' do
-    task = create(:task, state: :new)
-    sign_in task.user
-
-    patch :state, params: {
-      id: task.id,
-      state: :started
-    }, xhr: true
-
-    expect(response).to be_success
-    expect(Task.last.state).to eq(:started.to_s)
   end
 
   it 'should not create new task' do

@@ -12,7 +12,7 @@ table.table.table-hover
     tr id="task-#{task.id}"
       td= link_to task.id, task
       td= l(task.created_at, format: :short)
-      td class="text-#{status_class(task.state)}"= task.state
+      td class="status-text"= task.state
       td= link_to task.name, task
       - if current_user.role.admin?
         td= task.user.name
@@ -21,7 +21,7 @@ table.table.table-hover
       td.btn-group
         - Task.states.each do |state|
           = link_to state.name,
-                    state_task_path(task, params: {state: state.name}),
+                    api_task_state_path(task, params: {state: state.name}),
                     method: :patch,
                     remote: true,
                     class: "change-state-#{state.name} btn btn-default btn-xs #{state.name == task.state_name ? 'active' : ''}"

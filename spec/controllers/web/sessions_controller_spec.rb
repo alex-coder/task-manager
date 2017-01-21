@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe Web::SessionsController, type: :controller do
   it 'should render login form' do
     get :new
     expect(response).to be_success

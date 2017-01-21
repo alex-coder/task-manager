@@ -9,5 +9,6 @@ $(function () {
       var $task = $('#task-' + data.id);
       $task.find('[class*=change-state-].active').removeClass('active');
       $task.find('.change-state-' + data.state).addClass('active');
+      $task.find('.status-text').text(data.state);
     })
 })
