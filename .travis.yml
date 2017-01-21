@@ -4,4 +4,4 @@ rvm:
 script: "bundle exec rspec"
 services: mysql
 before_install:
-  - mysql -e 'CREATE DATABASE task-manager_test;'
+  - mysql -e 'CREATE DATABASE `task-manager_test`;'
