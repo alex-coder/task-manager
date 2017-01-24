@@ -3,7 +3,13 @@ Rails.application.routes.draw do
     root to: 'tasks#index'
 
     resource :sessions, only: [:new, :create, :destroy]
-    resources :tasks
+    resources :tasks, only: [:index]
+
+    resource :users, only: [] do
+      scope module: :users do
+        resources :tasks
+      end
+    end
   end
 
   namespace :api do

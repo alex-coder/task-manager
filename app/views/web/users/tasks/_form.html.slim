@@ -1,4 +1,4 @@
-= simple_form_for task do |f|
+= simple_form_for task, url: url do |f|
   = f.input :name
   = f.input :description
   = f.input :state, collection: Task.states.map(&:name), include_blank: false

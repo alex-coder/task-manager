@@ -8,7 +8,7 @@ class Web::SessionsController < Web::ApplicationController
     if @user && @user.authenticate(attributes[:password])
       sign_in(@user)
 
-      redirect_to root_path
+      redirect_to users_tasks_path
     else
       flash[:error] = true
       redirect_to action: :new
@@ -17,7 +17,7 @@ class Web::SessionsController < Web::ApplicationController
 
   def destroy
     sign_out(current_user)
-    redirect_to new_sessions_path
+    redirect_to root_path
   end
 
   private

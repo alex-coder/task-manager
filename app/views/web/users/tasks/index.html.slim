@@ -4,7 +4,8 @@ table.table.table-hover
     th Created at
     th State
     th Title
-    th Bound to
+    - if current_user.role.admin?
+      th Bound to
     th colspan="3"
 
   - @tasks.each do |task|
@@ -13,7 +14,8 @@ table.table.table-hover
       td= l(task.created_at, format: :short)
       td class="status-text"= task.state
       td= link_to task.name, users_task_path(task)
-      td= task.user.name
+      - if current_user.role.admin?
+        td= task.user.name
       td= link_to "Edit", edit_users_task_path(task)
       td= link_to "Remove", users_task_path(task), method: :delete
       td.btn-group

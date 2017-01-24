@@ -5,8 +5,13 @@ nav.navbar.navbar-default
 
     - if signed_in?
       ul.nav.navbar-nav
-        li class="#{current_page?(new_task_path) ? 'active' : ''}" = link_to "Create", new_task_path
+        li class="#{current_page?(users_tasks_path) ? 'active' : ''}" = link_to "My Cabinet", users_tasks_path
+        li class="#{current_page?(new_users_task_path) ? 'active' : ''}" = link_to "Create", new_users_task_path
 
       ul.nav.navbar-nav.navbar-right
         li.navbar-text= current_user.name
         li= link_to "Logout", sessions_path, remote: true, method: :delete
+
+    - else
+      ul.nav.navbar-nav.navbar-right
+        li= link_to "Login", new_sessions_path
